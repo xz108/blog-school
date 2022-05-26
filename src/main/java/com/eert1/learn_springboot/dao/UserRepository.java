@@ -1,6 +1,7 @@
 package com.eert1.learn_springboot.dao;
 
 import com.eert1.learn_springboot.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,4 +13,7 @@ public interface UserRepository {
 
     @Select("select * from db_user where username =#{username}")
     User selectByUser(String username);
+
+    @Insert("insert into db_user values(#{username},#{password})")
+    void insertUser(String username,String password);
 }

@@ -14,4 +14,9 @@ public class UserServiceimpl implements UserService {
        user= userRepository.selectByUser(username);
        return user;
     }
+
+    @Override
+    public void InsertUser(String username, String password) {
+        userRepository.insertUser(username,password);
+    }
 }
