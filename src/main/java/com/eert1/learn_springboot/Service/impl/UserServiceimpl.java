@@ -22,4 +22,22 @@ public class UserServiceimpl implements UserService {
         userRepository.insertUser(username,password);
     }
 
+    @Override
+    public User SelectNaAndPa(String username, String password) {
+       return userRepository.selectByUserAndPassword(username,password);
+    }
+
+    @Override
+    public Boolean register(String username, String password) {
+        if (userRepository.selectByUser(username)==null)
+        {
+            //可以注册
+            userRepository.insertUser(username,password);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }

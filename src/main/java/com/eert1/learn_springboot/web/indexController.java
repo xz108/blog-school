@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/")
@@ -19,16 +22,16 @@ public class indexController {
     @Autowired
     UserService userService;
     @PostMapping("/login")
-    public String login(@RequestParam String username, HttpSession session)
-    {
-        if(userService.SelectUser(username)==null)
+    public void login(HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password")String password, HttpSession session) throws IOException {
+
+        if(userService.SelectNaAndPa(username,password)==null)
         {
-            return "error/404";
+            response.getWriter().write("false");
         }
         else
         {
             session.setAttribute("user",username);
-            return "error/underBuilt";
+            response.getWriter().write("ture");
         }
     }
 }

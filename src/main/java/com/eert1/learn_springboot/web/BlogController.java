@@ -23,7 +23,7 @@ public class BlogController {
        return blogService.SelectAllBlog();
     }
     @GetMapping("/QueryFavorite")
-    public List<String> Query2()
+    public List Query2()
     {
         return blogService.SelectMostLike();
     }

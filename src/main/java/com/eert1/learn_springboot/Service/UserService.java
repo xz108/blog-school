@@ -8,5 +8,8 @@ public interface UserService {
 
     public void InsertUser(String username,String password);
 
+    public User SelectNaAndPa(String username,String password);
+
+    public Boolean register(String username,String password);
 
 }

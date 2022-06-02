@@ -21,9 +21,16 @@ public class UserController {
     @PostMapping("/register")
     public void post(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         String username = request.getParameter("username");
+        String password =request.getParameter("password");
         System.out.println(username);
-        response.getWriter().write("111");
-        model.addAttribute("mode1","modelName");
-        //userService.InsertUser(username,password);
+        if(userService.register(username,password))
+        {
+            response.getWriter().write("ture");
+        }
+//        response.getWriter().write();
+
+        else {
+            response.getWriter().write("false");
+        }
     }
 }
