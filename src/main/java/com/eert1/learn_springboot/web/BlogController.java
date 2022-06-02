@@ -37,7 +37,7 @@ public class BlogController {
     {
         String posterName= (String) session.getAttribute("username");
         blogService.addBlog(title,content,posterName,image,1);
-
+        image ="1";
         return "blog:"+title;
     }
 }
