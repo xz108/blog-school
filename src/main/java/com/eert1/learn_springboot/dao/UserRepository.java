@@ -10,10 +10,9 @@ import java.util.List;
 @Mapper
 public interface UserRepository {
 
-
     @Select("select * from db_user where username =#{username}")
     User selectByUser(String username);
 
-    @Insert("insert into db_user values(#{username},#{password})")
+    @Insert("insert into db_user values(null,#{username},#{password},null)")
     void insertUser(String username,String password);
 }

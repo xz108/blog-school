@@ -19,4 +19,5 @@ public class UserServiceimpl implements UserService {
     public void InsertUser(String username, String password) {
         userRepository.insertUser(username,password);
     }
+
 }

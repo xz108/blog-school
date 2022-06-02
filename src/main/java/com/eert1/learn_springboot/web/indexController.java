@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/")
 public class indexController {
@@ -19,7 +21,7 @@ public class indexController {
     @Autowired
     UserService userService;
     @PostMapping("/login")
-    public String login(@RequestParam String username)
+    public String login(@RequestParam String username, HttpSession session)
     {
         if(userService.SelectUser(username)==null)
         {
@@ -27,6 +29,7 @@ public class indexController {
         }
         else
         {
+            session.setAttribute("user",username);
             return "error/underBuilt";
         }
     }
