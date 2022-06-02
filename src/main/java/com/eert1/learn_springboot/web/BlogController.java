@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/Blog")
 @CrossOrigin(origins = "*")
 public class BlogController {
-    @Autowired
+//    @Autowired
     BlogService blogService;
     @GetMapping("/QueryAllBlog")
     public List<Blog> QueryBlog()

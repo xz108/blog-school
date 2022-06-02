@@ -2,12 +2,15 @@ package com.eert1.learn_springboot.dao;
 
 import com.eert1.learn_springboot.pojo.Blog;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
 import javax.xml.soap.Text;
 import java.util.List;
-
+@Component
+@Mapper
 public interface BlogRepository {
 
     @Select("select * from tb_blog")

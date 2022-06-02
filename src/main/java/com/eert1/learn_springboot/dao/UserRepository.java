@@ -5,10 +5,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
+@Component
 public interface UserRepository {
 
     @Select("select * from db_user where username =#{username}")
@@ -18,5 +20,5 @@ public interface UserRepository {
     User selectByUserAndPassword(@Param("username") String username,@Param("password") String password);
 
     @Insert("insert into db_user values(null,#{username},#{password},null)")
-    void insertUser(String username,String password);
+    void insertUser(@Param("username") String username,@Param("password") String password);
 }

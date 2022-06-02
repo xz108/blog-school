@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,18 +13,18 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("/")
-@CrossOrigin(origins = "*")
 public class indexController {
-    @GetMapping()
-    public String index()
-    {
-        return "index";
-    }
+//    @GetMapping()
+//    public String index()
+//    {
+//        return "index";
+//    }
     @Autowired
     UserService userService;
     @PostMapping("/login")
-    public void login(HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password")String password, HttpSession session) throws IOException {
-
+    public void login(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         if(userService.SelectNaAndPa(username,password)==null)
         {
             response.getWriter().write("false");

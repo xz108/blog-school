@@ -16,7 +16,7 @@ import java.io.IOException;
 @RequestMapping("/User")
 //@CrossOrigin(origins = "*")
 public class UserController {
-    @Autowired
+//    @Autowired
     UserService userService;
     @PostMapping("/register")
     public void post(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
