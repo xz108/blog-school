@@ -7,4 +7,4 @@ spring:
 ##    username: root
 ##    password: root
 server:
-  port: 8081
+  port: 8080

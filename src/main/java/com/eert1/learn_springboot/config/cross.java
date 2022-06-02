@@ -13,23 +13,15 @@ import javax.xml.ws.spi.http.HttpHandler;
 
 @Configuration
 public class cross implements WebMvcConfigurer {
-    @Bean
-    public WebMvcConfigurer crosConfigure(){
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://127.0.0.1:8080").allowedMethods("*")
-                        .allowedHeaders("*")
-                        .allowCredentials(true)
-                        .exposedHeaders(HttpHeaders.SET_COOKIE).maxAge(2000L);
-            }
-        };
-    }
+
     @Override
-    public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/user/**")
-                .excludePathPatterns("/user")
-                .excludePathPatterns("/user/login");
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowCredentials(true)
+                .maxAge(3600)
+                .allowedHeaders("*");
+
     }
 }

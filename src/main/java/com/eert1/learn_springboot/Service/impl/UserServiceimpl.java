@@ -4,9 +4,11 @@ import com.eert1.learn_springboot.Service.UserService;
 import com.eert1.learn_springboot.dao.UserRepository;
 import com.eert1.learn_springboot.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceimpl implements UserService {
-    @Autowired
+    //@Autowired
     UserRepository userRepository;
     User user;
     @Override
