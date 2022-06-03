@@ -13,10 +13,9 @@ public class UserServiceimpl implements UserService {
     User user;
     @Override
     public User SelectUser(String username) {
-       user= userRepository.selectByUser(username);
+       user= userRepository.selectIdByName(username);
        return user;
     }
-
     @Override
     public void InsertUser(String username, String password) {
         userRepository.insertUser(username,password);
@@ -39,5 +38,13 @@ public class UserServiceimpl implements UserService {
             return false;
         }
     }
+
+//    @Override
+//    public User SelectUserByName(String username) {
+////        u
+////        user =userRepository.
+//        return userRepository.selectByUser("username");
+//
+//    }
 
 }

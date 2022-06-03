@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+</div>
+<!--cdn引入vue-->
+<script src="https://cdn.staticfile.org/vue/2.6.11/vue.js"></script>
+<!--cdn引入ajax异步通信框架axios-->
+<script src="https://lib.baomitu.com/axios/latest/axios.js"></script>
+
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return{ //数据域
+                image:"",
+                title: "",
+                content:"",
+                username:"",
+                password: ""
+
+            }
+        },
+        mounted(){
+            var _this = this;
+            axios({
+                method:"post", //请求方式
+                url:"Blog/postblog", //要测试的接口
+                data: {
+                    image: "www.XXX",
+                    title: "标题XX",
+                    content: "我是内容",
+                    username: "123",
+                    password: "1111"
+                }
+            }).then(function (resp) {
+                console.log(resp.data) //打印返回数据到控制台
+            })
+        }
+    })
+</script>
+
+</body>
+</html>

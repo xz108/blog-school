@@ -6,7 +6,6 @@ import com.eert1.learn_springboot.pojo.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.soap.Text;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,11 +27,12 @@ public class BlogServiceimpl implements BlogService {
     }
 
     @Override
-    public void addBlog(String title, Text content, String poster, String image, int posterId) {
+    public void addBlog(String title, String content, String poster, String image, int posterId) {
         Date date = new Date();
 //        System.out.printf();
-        SimpleDateFormat sf =new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        SimpleDateFormat sf =new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String nowDate= sf.format(date);
+        System.out.println(nowDate);
 //        System.out.println(date.getTime());
         blogRepository.addBlog(title,content,poster,nowDate,image,posterId);
     }

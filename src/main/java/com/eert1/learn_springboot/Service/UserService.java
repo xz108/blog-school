@@ -12,4 +12,6 @@ public interface UserService {
 
     public Boolean register(String username,String password);
 
+
+//    public User SelectUserByName(String username);
 }

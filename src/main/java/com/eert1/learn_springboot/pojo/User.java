@@ -33,6 +33,16 @@ public class User {
         this.avater = avater;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", avater='" + avater + '\'' +
+                '}';
+    }
+
     public int id;
     public String username;
     public String password;

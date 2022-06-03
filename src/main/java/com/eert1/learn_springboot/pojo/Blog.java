@@ -1,11 +1,13 @@
 package com.eert1.learn_springboot.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import jdk.jfr.DataAmount;
 
 import javax.xml.soap.Text;
 import java.util.Date;
 //@DataAmount
 public class Blog {
+
     public int getId() {
         return id;
     }
@@ -70,6 +72,21 @@ public class Blog {
         this.posterId = posterId;
     }
 
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content=" + content +
+                ", poster='" + poster + '\'' +
+                ", likes=" + likes +
+                ", postTime=" + postTime +
+                ", image='" + image + '\'' +
+                ", posterId=" + posterId +
+                '}';
+    }
+
+    @JSONField(ordinal=1)
     public int id;
     public String title;
     public Text content;

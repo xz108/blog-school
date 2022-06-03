@@ -11,24 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/User")
 //@CrossOrigin(origins = "*")
 public class UserController {
-//    @Autowired
+    @Autowired
     UserService userService;
     @PostMapping("/register")
-    public void post(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
-        String username = request.getParameter("username");
-        String password =request.getParameter("password");
-        System.out.println(username);
+    public void post(@RequestBody Map<String,Object> map, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+        String username = (String) map.get("username");
+        String password =(String) map.get("password");
         if(userService.register(username,password))
         {
             response.getWriter().write("ture");
         }
-//        response.getWriter().write();
-
         else {
             response.getWriter().write("false");
         }
