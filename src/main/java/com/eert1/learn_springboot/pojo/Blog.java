@@ -24,11 +24,11 @@ public class Blog {
         this.title = title;
     }
 
-    public Text getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Text content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -89,7 +89,7 @@ public class Blog {
     @JSONField(ordinal=1)
     public int id;
     public String title;
-    public Text content;
+    public String content;
     public String poster;
     public int likes;
     public Date postTime;

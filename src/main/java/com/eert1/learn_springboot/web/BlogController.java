@@ -31,7 +31,7 @@ public class BlogController {
         session=request.getSession();
         session.setAttribute("username",111);
     }
-    @GetMapping("/QueryAllBlog")
+    @PostMapping("/QueryAllBlog")
     public List<Blog> QueryBlog(HttpServletResponse response) throws IOException {
         List<Blog> blogs = blogService.SelectAllBlog();
 //        response.getWriter().write(blogs);
