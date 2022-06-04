@@ -30,13 +30,24 @@
             var _this = this;
             axios({
                 method:"post", //请求方式
-                url:"Blog/postblog", //要测试的接口
+                url:"Team/refuse", //要测试的接口
                 data: {
+                    team_id:"1",
+                    leader:"aasd",
+                    member_id:"3",
+                    member_name:"asdasd",
+                    role:"混子",
+                    teamMsg:"我是TeamMsg",
                     image: "www.XXX",
                     title: "标题XX",
                     content: "我是内容",
-                    username: "123",
-                    password: "1111"
+                    username: "asdasda",
+                    name:"goods",
+                    des:"this is a good",
+                    state:"s0",
+                    password: "1111",
+                    blog_id:"1",
+                    gid:"2"
                 }
             }).then(function (resp) {
                 console.log(resp.data) //打印返回数据到控制台

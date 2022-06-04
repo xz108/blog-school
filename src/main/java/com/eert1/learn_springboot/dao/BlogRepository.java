@@ -25,4 +25,5 @@ public interface BlogRepository {
                  @Param("postTime")String postTime,
                  @Param("image")String image,
                  @Param("posterId")int posterId);
+
 }
