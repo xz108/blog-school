@@ -10,4 +10,8 @@ public interface GoodService {
 
     public List<Good> searchAllGoods();
     public int closeSell(int id);
+
+    public List<Good> SearchGood(String key);
+
+    public List<Good> GetAllGoodByName(String name);
 }

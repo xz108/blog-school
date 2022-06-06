@@ -9,4 +9,9 @@ public interface BlogService {
     public List SelectMostLike();
     public void addBlog(String title, String content, String poster, String image, int posterId);
 
+    public List<Blog> SelectAllTopBlog();
+    public  List<Blog> SearchBlog(String key);
+
+    public List<Blog> GetAllBlogByName(String username);
+    public Blog getOneBlog(int id);
 }

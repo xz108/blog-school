@@ -40,7 +40,23 @@ public class BlogController {
 //        response.getWriter().write("true");
         return blogs;
     }
-    @GetMapping("/QueryFavorite")
+
+    @PostMapping("/QueryAllTopBlog")
+    public List<Blog> QueryTopBlog(HttpServletResponse response) throws IOException {
+        List<Blog> blogs = blogService.SelectAllTopBlog();
+//        response.getWriter().write(blogs);
+        System.out.println(blogs);
+
+//        response.getWriter().write("true");
+        return blogs;
+    }
+    @PostMapping("/GetUserblog")
+    public List<Blog> GetUserBlog(@RequestBody Map<String,Object>map)
+    {
+        return blogService.GetAllBlogByName((String) map.get("username"));
+    }
+
+    @PostMapping("/QueryFavorite")
     public List Query2(HttpServletResponse response) throws IOException {
         List titles =blogService.SelectMostLike();
         System.out.println(titles);
@@ -48,6 +64,12 @@ public class BlogController {
 //        response.getWriter().write(titles);
         return blogService.SelectMostLike();
     }
+    @PostMapping("/searchBlog")
+    public List<Blog> SearchBlog(@RequestBody Map<String,Object>map)
+    {
+        return blogService.SearchBlog((String) map.get("key"));
+    }
+
     @PostMapping("/postblog")
     public String postBlog(
 
@@ -77,5 +99,10 @@ public class BlogController {
             return "true";
         }
 
+    }
+    @PostMapping("/selectOne")
+    public Blog GetBlog(@RequestBody Map<String,Object>map)
+    {
+        return blogService.getOneBlog((Integer)map.get("id"));
     }
 }

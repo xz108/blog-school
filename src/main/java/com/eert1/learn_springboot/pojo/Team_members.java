@@ -5,6 +5,15 @@ public class Team_members {
     public int team_id;
     public String memberName;
     public String role;
+    public String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public int getMember_id() {
         return member_id;

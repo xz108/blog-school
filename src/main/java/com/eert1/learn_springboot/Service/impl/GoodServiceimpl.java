@@ -42,4 +42,14 @@ public class GoodServiceimpl implements GoodService {
        else
            return 0;
     }
+
+    @Override
+    public List<Good> SearchGood(String key) {
+        return goodsRepository.SearchGood(key);
+    }
+
+    @Override
+    public List<Good> GetAllGoodByName(String name) {
+        return goodsRepository.GetGoodByname(name);
+    }
 }

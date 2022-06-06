@@ -12,6 +12,8 @@ public interface UserService {
 
     public Boolean register(String username,String password);
 
+    public int UpdateUser(String avatar,String newU,String OldU);
+
 
 //    public User SelectUserByName(String username);
 }

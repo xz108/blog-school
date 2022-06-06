@@ -39,6 +39,14 @@ public class UserServiceimpl implements UserService {
         }
     }
 
+    @Override
+    public int UpdateUser(String avatar, String newU, String OldU) {
+        if (userRepository.UpdateUser(avatar,newU,OldU)!=0)
+            return 1;
+        else return 0;
+
+    }
+
 //    @Override
 //    public User SelectUserByName(String username) {
 ////        u

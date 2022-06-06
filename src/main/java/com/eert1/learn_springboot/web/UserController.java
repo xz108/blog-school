@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @Controller
+@ResponseBody
 @RequestMapping("/User")
 //@CrossOrigin(origins = "*")
 public class UserController {
@@ -30,5 +31,12 @@ public class UserController {
         else {
             response.getWriter().write("false");
         }
+    }
+    @PostMapping("/updateUser")
+    public Boolean Update(@RequestBody Map<String,Object> map, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+        String avatar =(String)map.get("avatar") ;
+        String Newusername = (String) map.get("newU");
+        String Oldusername =(String) map.get("oldU");
+        return userService.UpdateUser(avatar,Newusername,Oldusername)==1;
     }
 }

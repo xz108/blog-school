@@ -29,11 +29,23 @@ public class GoodController {
             return true;
         else return false;
     }
-    @GetMapping("/searchGoods")
+    @GetMapping("/GetGoods")
     public List<Good> GetGood()
     {
         return goodService.searchAllGoods();
     }
+    @PostMapping("/searchGood")
+    public List<Good> searchGood(@RequestBody Map<String,Object> map)
+    {
+        return goodService.SearchGood((String) map.get("key"));
+    }
+
+    @PostMapping("/GetGoodByname")
+    public List<Good> GetGoodByname(@RequestBody Map<String,Object> map)
+    {
+        return goodService.GetAllGoodByName((String) map.get("username"));
+    }
+
     @PostMapping("/closeSell")
     public Boolean CloseGood(@RequestBody Map<String,Object>map)
     {

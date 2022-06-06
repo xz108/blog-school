@@ -21,6 +21,27 @@ public class BlogServiceimpl implements BlogService {
     }
 
     @Override
+    public List<Blog> SelectAllTopBlog() {
+        List<Blog> blogs =blogRepository.SearchAllBlog();
+        return blogs;
+    }
+
+    @Override
+    public List<Blog> SearchBlog(String key) {
+        return blogRepository.SearchBlog(key);
+    }
+
+    @Override
+    public List<Blog> GetAllBlogByName(String username) {
+        return blogRepository.GetAllBlogByName(username);
+    }
+
+    @Override
+    public Blog getOneBlog(int id) {
+        return blogRepository.SearchOneBlog(id);
+    }
+
+    @Override
     public List SelectMostLike() {
          List titles =blogRepository.MostLikes();
          return titles;

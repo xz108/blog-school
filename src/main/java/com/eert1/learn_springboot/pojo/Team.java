@@ -1,5 +1,7 @@
 package com.eert1.learn_springboot.pojo;
 
+import java.util.List;
+
 public class Team {
     public int getTeam_id() {
         return team_id;
@@ -29,4 +31,32 @@ public class Team {
     public String leader;
     public String teamMsg;
 
+    public String getLeader_avatar() {
+        return leader_avatar;
+    }
+
+    public void setLeader_avatar(String leader_avatar) {
+        this.leader_avatar = leader_avatar;
+    }
+
+    public int getMax_num() {
+        return max_num;
+    }
+
+    public void setMax_num(int max_num) {
+        this.max_num = max_num;
+    }
+
+    public String leader_avatar;
+    public int max_num;
+
+    public List<Team_members> team_membersList;
+
+    public List<Team_members> getTeam_membersList() {
+        return team_membersList;
+    }
+
+    public void setTeam_membersList(List<Team_members> team_membersList) {
+        this.team_membersList = team_membersList;
+    }
 }

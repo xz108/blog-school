@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eert1.learn_springboot.dao.TeamRepository">
+    <resultMap id="teamRe" type="com.eert1.learn_springboot.pojo.Team">
+        <result column="team_id" property="team_id"></result>
+        <result column="leader" property="leader"></result>
+        <result column="teamMsg" property="teamMsg"></result>
+        <result column="leader_avatar" property="avatar"/>
+        <collection property="team_membersList" javaType="list" ofType="com.eert1.learn_springboot.pojo.Team_members">
+            <result column="member_id" property="member_id"/>
+            <result column="team_id" property="team_id"/>
+            <result column="memberName" property="memberName"/>
+            <result column="role" property="role"/>
+            <result column="avatar" property="avatar"/>
+        </collection>
+
+
+    </resultMap>
+    <select id="SelectAll" resultMap="teamRe">
+        select * from team left join team_members tm on team.team_id=tm.team_id
+    </select>
+    <select id="SearchTeam" resultMap="teamRe">
+        select * from team left join team_members tm on team.team_id=tm.team_id where team.team_id = #{key}
+    </select>
+    <select id="GetAllTeamByName" resultMap="teamRe">
+        select * from team left join team_members tm on team.team_id=tm.team_id where team.leader = #{username}
+    </select>
+
+</mapper>
