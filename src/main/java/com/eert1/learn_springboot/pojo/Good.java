@@ -3,6 +3,7 @@ package com.eert1.learn_springboot.pojo;
 import javax.xml.crypto.Data;
 import javax.xml.soap.Text;
 import java.util.Date;
+import java.util.List;
 
 public class Good {
     public int getId() {
@@ -53,22 +54,23 @@ public class Good {
         this.state = state;
     }
 
-    public Date getDatetime() {
+    public String getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(Date datetime) {
+    public void setDatetime(String  datetime) {
         this.datetime = datetime;
     }
 
     int id;
     String name;
-    String image;
+   public String image;
     String seller;
     Text description;
     String state;
-    Date datetime;
+    String datetime;
     String avatar;
+    public List imagelist;
 
     public String getAvatar() {
         return avatar;

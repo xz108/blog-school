@@ -15,11 +15,11 @@ public class GoodServiceimpl implements GoodService {
     @Autowired
     GoodsRepository goodsRepository;
     @Override
-    public int addGoods(String name, String image, String seller, String description) {
+    public int addGoods(String name, String image, String seller, String description,String avatar) {
         Date date =new Date();
         SimpleDateFormat sf =new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String nowDate =sf.format(date);
-       int createId = goodsRepository.insertOneGood(name,image,seller,description,nowDate);
+       int createId = goodsRepository.insertOneGood(name,image,seller,description,nowDate,avatar);
        System.out.println(createId);
        if(createId==0)
        {

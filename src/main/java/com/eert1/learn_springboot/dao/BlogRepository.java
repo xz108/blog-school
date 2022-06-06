@@ -39,13 +39,14 @@ public interface BlogRepository {
 
     @Select("Select title from(select * from db_blog order by likes) db_blog  limit 10")
     List<String> MostLikes();
-    @Insert("Insert into db_blog values(null,#{title},#{content},#{poster},null,#{postTime},#{image},#{posterId})")
+    @Insert("Insert into db_blog values(null,#{title},#{content},#{poster},null,#{postTime},#{image},#{posterId},#{avatar})")
     void addBlog(@Param("title") String title,
                  @Param("content") String content,
                  @Param("poster")String poster,
                  @Param("postTime")String postTime,
                  @Param("image")String image,
-                 @Param("posterId")int posterId);
+                 @Param("posterId")int posterId,
+                 @Param("avatar")String avatar);
 
 
 }

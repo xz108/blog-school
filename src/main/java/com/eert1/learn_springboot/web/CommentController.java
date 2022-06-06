@@ -1,6 +1,7 @@
 package com.eert1.learn_springboot.web;
 
 import com.eert1.learn_springboot.Service.CommentService;
+import com.eert1.learn_springboot.pojo.Blog;
 import com.eert1.learn_springboot.pojo.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,6 @@ public class CommentController {
         Integer bg1=Integer.parseInt(blog_id);
         System.out.println(bg1);
         return commentService.selectAllComment(bg1);
-//        return 1;
     }
+
 }

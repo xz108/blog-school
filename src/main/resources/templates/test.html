@@ -30,7 +30,7 @@
             var _this = this;
             axios({
                 method:"post", //请求方式
-                url:"Blog/selectOne", //要测试的接口
+                url:"Team/SearchTeam", //要测试的接口
                 data: {
                     team_id:"1",
                     leader:"aasd",
@@ -38,7 +38,7 @@
                     member_name:"asdasd",
                     role:"混子",
                     teamMsg:"我是TeamMsg",
-                    image: "www.XXX",
+                    image: ["12", "asd", "sad"],
                     title: "标题XX",
                     content: "我是内容",
                     username: "aa",
@@ -47,9 +47,10 @@
                     state:"s0",
                     password: "1111",
                     blog_id:"1",
+                    posterName:"newusername",
                     gid:"2",
                     key:1,
-                    id:1,
+                    id:27,
                     oldU:"123",
                     newU:"imNewU"
                 }

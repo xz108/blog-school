@@ -1,5 +1,7 @@
 package com.eert1.learn_springboot.web;
 
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import com.eert1.learn_springboot.Service.GoodService;
 import com.eert1.learn_springboot.pojo.Good;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,30 +22,48 @@ public class GoodController {
     @PostMapping("/PostGood")
     public boolean postGood(@RequestBody Map<String ,Object> map, HttpSession session)
     {   String seller=(String) session.getAttribute("username");
-        String image=(String)map.get("image");
+        List image=(List) map.get("image");
         String name =(String)map.get("name");
         String description=(String)map.get("des");
         String state =(String)map.get("state");
-
-        if(goodService.addGoods(name,image,seller,description)==1)
+        String avatar =(String)map.get("avatar");
+        String Json;
+        System.out.println(image);
+        Json= JSON.toJSONString(image);
+        if(goodService.addGoods(name,Json,seller,description,avatar)==1)
             return true;
         else return false;
     }
-    @GetMapping("/GetGoods")
+    @PostMapping("/GetGoods")
     public List<Good> GetGood()
     {
-        return goodService.searchAllGoods();
+        List<Good>goods=goodService.searchAllGoods();
+        for (Good g:
+             goods) {
+            g.imagelist= JSONUtil.toList(JSONUtil.parseArray(g.image), String.class);
+        }
+        return goods;
     }
     @PostMapping("/searchGood")
     public List<Good> searchGood(@RequestBody Map<String,Object> map)
     {
-        return goodService.SearchGood((String) map.get("key"));
+        List<Good>goods= goodService.SearchGood((String) map.get("key"));
+        for (Good g:
+             goods) {g.imagelist=JSONUtil.toList(JSONUtil.parseArray(g.image),String.class);
+
+        }
+        return goods;
     }
 
     @PostMapping("/GetGoodByname")
     public List<Good> GetGoodByname(@RequestBody Map<String,Object> map)
     {
-        return goodService.GetAllGoodByName((String) map.get("username"));
+        List<Good>goods= goodService.GetAllGoodByName((String) map.get("username"));
+        for (Good good:
+             goods) {
+            good.imagelist=JSONUtil.toList(JSONUtil.parseArray(good.image),String.class);
+
+        }return goods;
     }
 
     @PostMapping("/closeSell")

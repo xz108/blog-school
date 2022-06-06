@@ -1,10 +1,15 @@
 package com.eert1.learn_springboot.pojo;
 
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import jdk.jfr.DataAmount;
+import org.apache.tomcat.util.buf.StringUtils;
 
 import javax.xml.soap.Text;
 import java.util.Date;
+import java.util.List;
+
 //@DataAmount
 public class Blog {
 
@@ -48,11 +53,11 @@ public class Blog {
         this.likes = likes;
     }
 
-    public Date getPostTime() {
+    public String getPostTime() {
         return postTime;
     }
 
-    public void setPostTime(Date postTime) {
+    public void setPostTime(String postTime) {
         this.postTime = postTime;
     }
 
@@ -92,7 +97,10 @@ public class Blog {
     public String content;
     public String poster;
     public int likes;
-    public Date postTime;
+    public String postTime;
     public String image;
     public int posterId;
+    public List<String> imageList;
+
+
 }

@@ -1,8 +1,11 @@
 package com.eert1.learn_springboot.web;
 
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import com.eert1.learn_springboot.Service.BlogService;
 import com.eert1.learn_springboot.Service.UserService;
 import com.eert1.learn_springboot.pojo.Blog;
+import com.eert1.learn_springboot.pojo.Image;
 import com.eert1.learn_springboot.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -23,6 +26,8 @@ import java.util.Map;
 public class BlogController {
     @Autowired
     BlogService blogService;
+
+    List<Blog> blogslist;
     @Autowired
     UserService userService;
     public void initSession(HttpServletRequest request, HttpSession session)
@@ -34,10 +39,14 @@ public class BlogController {
     @PostMapping("/QueryAllBlog")
     public List<Blog> QueryBlog(HttpServletResponse response) throws IOException {
         List<Blog> blogs = blogService.SelectAllBlog();
-//        response.getWriter().write(blogs);
-        System.out.println(blogs);
+        for (Blog b:
+             blogs) {
+            b.imageList=JSONUtil.toList(JSONUtil.parseArray(b.image), String.class);
+        }
 
-//        response.getWriter().write("true");
+
+        System.out.println(JSONUtil.toList(JSONUtil.parseArray("[\"12\", \"asd\", \"sad\"]"), String.class));
+
         return blogs;
     }
 
@@ -45,29 +54,38 @@ public class BlogController {
     public List<Blog> QueryTopBlog(HttpServletResponse response) throws IOException {
         List<Blog> blogs = blogService.SelectAllTopBlog();
 //        response.getWriter().write(blogs);
-        System.out.println(blogs);
-
-//        response.getWriter().write("true");
+//        System.out.println(blogs);
+       //        blogs.set()
         return blogs;
     }
     @PostMapping("/GetUserblog")
     public List<Blog> GetUserBlog(@RequestBody Map<String,Object>map)
     {
-        return blogService.GetAllBlogByName((String) map.get("username"));
+        List<Blog> blogs= blogService.GetAllBlogByName((String) map.get("username"));
+//        List<Blog> blogs = blogService.SelectAllBlog();
+        for (Blog b:
+                blogs) {
+            b.imageList=JSONUtil.toList(JSONUtil.parseArray(b.image), String.class);
+        }
+        return blogs;
     }
 
     @PostMapping("/QueryFavorite")
     public List Query2(HttpServletResponse response) throws IOException {
         List titles =blogService.SelectMostLike();
         System.out.println(titles);
-//        String ti=(String) titles;
-//        response.getWriter().write(titles);
         return blogService.SelectMostLike();
     }
     @PostMapping("/searchBlog")
     public List<Blog> SearchBlog(@RequestBody Map<String,Object>map)
     {
-        return blogService.SearchBlog((String) map.get("key"));
+        List<Blog>blogs= blogService.SearchBlog((String) map.get("key"));
+//        List<Blog> blogs = blogService.SelectAllBlog();
+        for (Blog b:
+                blogs) {
+            b.imageList=JSONUtil.toList(JSONUtil.parseArray(b.image), String.class);
+        }
+        return blogs;
     }
 
     @PostMapping("/postblog")
@@ -78,31 +96,33 @@ public class BlogController {
     {
         String title =(String) map.get("title");
         String content =(String)map.get("content");
-        String image=(String)map.get("image");
-        String posterName= (String) session.getAttribute("username");
-//        System.out.println(posterName);
-        posterName="123";
+        List<Image> image=(List) map.get("image");
+        String avatar =(String)map.get("avatar");
+        String posterName= (String)map.get("posterName");
         if (posterName==null)
             return "false";
         else {
             User postid;
-//            System.out.println(userService);
-//            System.out.println(userService.SelectUser("123"));
             postid=userService.SelectUser(posterName);
             System.out.println(postid);
-
-//            blogService.addBlog(title,content,posterName,image,11);
-//            System.out.println(posterName);
-//            System.out.println(postid);
-//            System.out.println(postid.id);
-            blogService.addBlog(title,content,posterName,image,postid.getId());
+            if (postid==null)
+                return "false";
+            System.out.println(image);
+            String Json;
+//            List<Image> images;
+            System.out.println(image);
+            Json= JSON.toJSONString(image);
+            System.out.println(Json);
+            blogService.addBlog(title,content,posterName,Json,postid.getId(),avatar);
             return "true";
         }
-
     }
     @PostMapping("/selectOne")
     public Blog GetBlog(@RequestBody Map<String,Object>map)
     {
-        return blogService.getOneBlog((Integer)map.get("id"));
+        Blog blog =blogService.getOneBlog((Integer)map.get("id"));
+//        List<Blog> blogs = blogService.SelectAllBlog();
+        blog.imageList=JSONUtil.toList(JSONUtil.parseArray(blog.image),String.class);
+        return blog;
     }
 }

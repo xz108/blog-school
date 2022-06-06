@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface GoodService {
-    public int addGoods(String name, String image, String seller, String description);
+    public int addGoods(String name, String image, String seller, String description,String avatar);
 
     public List<Good> searchAllGoods();
     public int closeSell(int id);
