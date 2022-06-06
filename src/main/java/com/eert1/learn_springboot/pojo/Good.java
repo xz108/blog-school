@@ -38,11 +38,11 @@ public class Good {
         this.seller = seller;
     }
 
-    public Text getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Text description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -66,7 +66,7 @@ public class Good {
     String name;
    public String image;
     String seller;
-    Text description;
+    String description;
     String state;
     String datetime;
     String avatar;
