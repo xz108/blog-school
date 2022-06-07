@@ -25,16 +25,14 @@ public class TeamController {
         String leader =(String) map.get("leader");
         String teamMsg =(String) map.get("teamMsg");
         String leader_avatar =(String) map.get("leader_avatar");
-        String max_num =(String) map.get("max_num");
-        Integer max=Integer.parseInt(max_num);
-        int create = teamService.createTeam(leader,teamMsg,leader_avatar,max);
+        Integer max_num =(Integer) map.get("max_num");
+//        Integer max=Integer.parseInt(max_num);
+        int create = teamService.createTeam(leader,teamMsg,leader_avatar,max_num);
         return create == 1;
     }
     @PostMapping("/getApplication")
     public List<Team> getAll(@RequestBody Map<String,Object>map)
     {
-        String team_id =(String) map.get("team_id");
-        Integer td=Integer.parseInt(team_id);
 
          return teamService.SelectAll();
 //         return 1;

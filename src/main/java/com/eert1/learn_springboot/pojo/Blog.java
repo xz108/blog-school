@@ -100,6 +100,7 @@ public class Blog {
     public String postTime;
     public String image;
     public int posterId;
+    public String avatar;
     public List<String> imageList;
 
 

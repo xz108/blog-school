@@ -22,7 +22,7 @@ public class BlogServiceimpl implements BlogService {
 
     @Override
     public List<Blog> SelectAllTopBlog() {
-        List<Blog> blogs =blogRepository.SearchAllBlog();
+        List<Blog> blogs =blogRepository.SearchAllTopBlog();
         return blogs;
     }
 
@@ -42,8 +42,13 @@ public class BlogServiceimpl implements BlogService {
     }
 
     @Override
-    public List SelectMostLike() {
-         List titles =blogRepository.MostLikes();
+    public Blog getOneTopBlog(int id) {
+        return blogRepository.SearchOneTopBlog(id);
+    }
+
+    @Override
+    public List<Blog> SelectMostLike() {
+         List<Blog> titles =blogRepository.MostLikes();
          return titles;
     }
 

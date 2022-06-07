@@ -53,9 +53,10 @@ public class BlogController {
     @PostMapping("/QueryAllTopBlog")
     public List<Blog> QueryTopBlog(HttpServletResponse response) throws IOException {
         List<Blog> blogs = blogService.SelectAllTopBlog();
-//        response.getWriter().write(blogs);
-//        System.out.println(blogs);
-       //        blogs.set()
+        for (Blog b:
+             blogs) {b.imageList=JSONUtil.toList(JSONUtil.parseArray(b.image),String.class);
+
+        }
         return blogs;
     }
     @PostMapping("/GetUserblog")
@@ -71,8 +72,8 @@ public class BlogController {
     }
 
     @PostMapping("/QueryFavorite")
-    public List Query2(HttpServletResponse response) throws IOException {
-        List titles =blogService.SelectMostLike();
+    public List<Blog> Query2(HttpServletResponse response) throws IOException {
+        List<Blog> titles =blogService.SelectMostLike();
         System.out.println(titles);
         return blogService.SelectMostLike();
     }
@@ -119,9 +120,14 @@ public class BlogController {
     }
     @PostMapping("/selectOne")
     public Blog GetBlog(@RequestBody Map<String,Object>map)
-    {
-        Blog blog =blogService.getOneBlog((Integer)map.get("id"));
-//        List<Blog> blogs = blogService.SelectAllBlog();
+    {   Blog blog;
+        String type =(String)map.get("type");
+        if(type.equals("normal"))
+            blog =blogService.getOneBlog((Integer)map.get("id"));
+        else
+            blog=blogService.getOneTopBlog((Integer)map.get("id"));
+        if(blog==null)
+            return null;
         blog.imageList=JSONUtil.toList(JSONUtil.parseArray(blog.image),String.class);
         return blog;
     }

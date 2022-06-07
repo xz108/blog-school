@@ -30,19 +30,21 @@
             var _this = this;
             axios({
                 method:"post", //请求方式
-                url:"Team/SearchTeam", //要测试的接口
+                url:"Team/getApplication", //要测试的接口
                 data: {
                     team_id:"1",
                     leader:"aasd",
                     member_id:"3",
                     member_name:"asdasd",
                     role:"混子",
+                    type:"normal",
                     teamMsg:"我是TeamMsg",
                     image: ["12", "asd", "sad"],
                     title: "标题XX",
                     content: "我是内容",
                     username: "aa",
                     name:"goods",
+                    leader_avatar:"aa",
                     des:"this is a good",
                     state:"s0",
                     password: "1111",
@@ -52,6 +54,7 @@
                     key:1,
                     id:27,
                     oldU:"123",
+                    max_num:11,
                     newU:"imNewU"
                 }
             }).then(function (resp) {

@@ -8,7 +8,7 @@
         <result column="team_id" property="team_id"></result>
         <result column="leader" property="leader"></result>
         <result column="teamMsg" property="teamMsg"></result>
-        <result column="leader_avatar" property="avatar"/>
+        <result column="leader_avatar" property="leader_avatar"/>
         <collection property="team_membersList" javaType="list" ofType="com.eert1.learn_springboot.pojo.Team_members">
             <result column="member_id" property="member_id"/>
             <result column="team_id" property="team_id"/>

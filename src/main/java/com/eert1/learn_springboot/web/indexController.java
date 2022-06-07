@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @Controller
+@ResponseBody
 @RequestMapping("/")
 public class indexController {
     @GetMapping()
@@ -24,7 +25,7 @@ public class indexController {
     @Autowired
     UserService userService;
     @PostMapping("/login")
-    public void login(@RequestBody Map<String,Object> map, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+    public User login(@RequestBody Map<String,Object> map, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
        String username = (String) map.get("username");
        String password = (String) map.get("password");
        User user;
@@ -32,13 +33,17 @@ public class indexController {
         System.out.println(user);
         if(userService.SelectNaAndPa(username,password)==null)
         {
+//            return null;
             response.getWriter().write("false");
         }
         else
         {
             System.out.println();
             session.setAttribute("user",username);
-            response.getWriter().write("ture");
+//            response.getWriter().write("ture");
+            return user;
+
         }
+        return  null;
     }
 }

@@ -51,4 +51,31 @@ public class CommentServiceimpl implements CommentService {
         }
         return false;
     }
+
+    @Override
+    public List<Comment> selectAllTopComment(int blog_id) {
+        return commentRepository.SelectAllTopComment(blog_id);
+    }
+
+    @Override
+    public int postTopComment(String nickname, String content, String avatar, int blog_id) {
+        Date date = new Date();
+//        System.out.printf();
+        SimpleDateFormat sf =new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String nowDate= sf.format(date);
+        System.out.println(nowDate);
+        String title;
+        if(judgeTitle(nickname))
+        {
+            title="作者";
+        }
+        else
+            title="观众";
+        if (commentRepository.postTopComment(nickname,content,avatar,nowDate,blog_id,title)==1)
+        {
+            return 1;
+        }
+        else
+            return 0;
+    }
 }

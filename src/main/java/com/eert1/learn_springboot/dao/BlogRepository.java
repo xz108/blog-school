@@ -20,25 +20,28 @@ public interface BlogRepository {
     @Select("select * from db_blog where id=#{id}")
     Blog SearchOneBlog(int id);
 
+    @Select("select * from db_top where id=#{id}")
+    Blog SearchOneTopBlog(int id);
+
     @Select("select * from db_blog where poster=#{username}")
     List<Blog> GetAllBlogByName(String username);
 
     @Select("select * from db_top")
     List<Blog> SearchAllTopBlog();
 
-    @Insert("Insert into db_top values(null,#{title},#{content},#{poster},null,#{postTime},#{image},#{posterId})")
+    @Insert("Insert into db_top values(null,#{title},#{content},#{poster},null,#{postTime},#{image},#{posterId},#{avatar})")
     void addTopBlog(@Param("title") String title,
                  @Param("content") String content,
                  @Param("poster")String poster,
                  @Param("postTime")String postTime,
                  @Param("image")String image,
-                 @Param("posterId")int posterId);
+                 @Param("posterId")int posterId, @Param("avatar")String avatar);
 
     @Select("select * from db_blog where title like  concat('%',#{key},'%')")
     List<Blog> SearchBlog(String key);
 
-    @Select("Select title from(select * from db_blog order by likes) db_blog  limit 10")
-    List<String> MostLikes();
+    @Select("Select title,id from(select * from db_blog order by likes) db_blog  limit 10")
+    List<Blog> MostLikes();
     @Insert("Insert into db_blog values(null,#{title},#{content},#{poster},null,#{postTime},#{image},#{posterId},#{avatar})")
     void addBlog(@Param("title") String title,
                  @Param("content") String content,

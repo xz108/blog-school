@@ -37,5 +37,26 @@ public class CommentController {
         System.out.println(bg1);
         return commentService.selectAllComment(bg1);
     }
+    @PostMapping("/postTopComment")
+    public boolean postTopComment(@RequestBody Map<String,Object>map)
+    {
+        String nickname=(String) map.get("username");
+        String content =(String)map.get("content");
+        String avatar =(String) map.get("avatar");
+        String bid =(String)map.get("blog_id");
+        Integer blog_id=Integer.parseInt(bid);
+        System.out.println(blog_id);
+        if(commentService.postTopComment(nickname,content,avatar,blog_id)==1)
+            return true;
+        else return false;
+    }
+    @PostMapping("/listAlltopComment")
+    public List<Comment> getTopComment(@RequestBody Map<String,Object>map)
+    {
+        String blog_id =(String) map.get("blog_id");
+        Integer bg1=Integer.parseInt(blog_id);
+        System.out.println(bg1);
+        return commentService.selectAllTopComment(bg1);
+    }
 
 }
