@@ -19,32 +19,31 @@ public class CommentController {
     @PostMapping("/postComment")
     public boolean postComment(@RequestBody Map<String,Object>map)
     {
-        String nickname=(String) map.get("username");
+        String nickname=(String) map.get("nickname");
         String content =(String)map.get("content");
         String avatar =(String) map.get("avatar");
-        String bid =(String)map.get("blog_id");
-        Integer blog_id=Integer.parseInt(bid);
-        System.out.println(blog_id);
-        if(commentService.postComment(nickname,content,avatar,blog_id)==1)
+        Integer bid =(Integer)map.get("blog_id");
+        System.out.println(bid);
+        if(commentService.postComment(nickname,content,avatar,bid)==1)
             return true;
         else return false;
     }
     @PostMapping("/listAllComment")
     public List<Comment> getComment(@RequestBody Map<String,Object>map)
     {
-        String blog_id =(String) map.get("blog_id");
-        Integer bg1=Integer.parseInt(blog_id);
-        System.out.println(bg1);
-        return commentService.selectAllComment(bg1);
+        Integer blog_id =(Integer) map.get("blog_id");
+        System.out.println(blog_id);
+        List<Comment> comments = commentService.selectAllComment(blog_id);
+        System.out.println(comments);
+        return commentService.selectAllComment(blog_id);
     }
     @PostMapping("/postTopComment")
     public boolean postTopComment(@RequestBody Map<String,Object>map)
     {
-        String nickname=(String) map.get("username");
+        String nickname=(String) map.get("nickname");
         String content =(String)map.get("content");
         String avatar =(String) map.get("avatar");
-        String bid =(String)map.get("blog_id");
-        Integer blog_id=Integer.parseInt(bid);
+        Integer blog_id =(Integer)map.get("blog_id");
         System.out.println(blog_id);
         if(commentService.postTopComment(nickname,content,avatar,blog_id)==1)
             return true;
@@ -53,10 +52,9 @@ public class CommentController {
     @PostMapping("/listAlltopComment")
     public List<Comment> getTopComment(@RequestBody Map<String,Object>map)
     {
-        String blog_id =(String) map.get("blog_id");
-        Integer bg1=Integer.parseInt(blog_id);
-        System.out.println(bg1);
-        return commentService.selectAllTopComment(bg1);
+        Integer blog_id =(Integer) map.get("blog_id");
+        System.out.println(blog_id);
+        return commentService.selectAllTopComment(blog_id);
     }
 
 }

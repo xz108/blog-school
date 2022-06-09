@@ -9,6 +9,8 @@
         <result column="leader" property="leader"></result>
         <result column="teamMsg" property="teamMsg"></result>
         <result column="leader_avatar" property="leader_avatar"/>
+        <result column="maxNum" property="maxNum"/>
+        <result column="title" property="title"/>
         <collection property="team_membersList" javaType="list" ofType="com.eert1.learn_springboot.pojo.Team_members">
             <result column="member_id" property="member_id"/>
             <result column="team_id" property="team_id"/>
@@ -23,7 +25,7 @@
         select * from team left join team_members tm on team.team_id=tm.team_id
     </select>
     <select id="SearchTeam" resultMap="teamRe">
-        select * from team left join team_members tm on team.team_id=tm.team_id where team.team_id = #{key}
+        select * from team left join team_members tm on team.team_id=tm.team_id where team.title like concat('%',#{key},'%')
     </select>
     <select id="GetAllTeamByName" resultMap="teamRe">
         select * from team left join team_members tm on team.team_id=tm.team_id where team.leader = #{username}

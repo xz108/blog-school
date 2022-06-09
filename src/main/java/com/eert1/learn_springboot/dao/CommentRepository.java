@@ -22,8 +22,8 @@ public interface CommentRepository {
                     @Param("title")String title);
     @Select("select * from comment where blog_id=#{blog_id}")
     List<Comment> SelectAllComment(int blog_id);
-    @Select("select * from db_blog where poster=#{poster}")
-    Blog SelectPoster(String poster);
+    @Select("select * from db_blog where id=#{id}")
+    Blog SelectPoster(int id);
 
     @Insert("insert into top_comment values(null,#{nickname},#{content},#{avatar},#{create_time},#{blog_id},#{title})")
     int postTopComment(@Param("nickname")String nickname,

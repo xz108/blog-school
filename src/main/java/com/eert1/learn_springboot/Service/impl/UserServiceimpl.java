@@ -41,18 +41,21 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public int UpdateUser(String avatar, String newU, String OldU) {
-        if (userRepository.UpdateUser(avatar,newU,OldU)!=0)
+        if (userRepository.UpdateUser(avatar,newU,OldU)!=0) {
+            userRepository.UpdateUserBlog(avatar,newU,OldU);
+            userRepository.UpdateUserTopComment(avatar,newU,OldU);
+            userRepository.UpdateUserGood(avatar,newU,OldU);
+            userRepository.UpdateUserTeam(avatar,newU,OldU);
+            userRepository.UpdateUserComment(avatar,newU,OldU);
+            userRepository.UpdateUserTeamM(avatar,newU,OldU);
+            userRepository.UpdateUserBlogTop(avatar,newU,OldU);
             return 1;
+        }
+
         else return 0;
 
     }
 
-//    @Override
-//    public User SelectUserByName(String username) {
-////        u
-////        user =userRepository.
-//        return userRepository.selectByUser("username");
-//
-//    }
+
 
 }

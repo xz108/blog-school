@@ -54,7 +54,8 @@ public class BlogController {
     public List<Blog> QueryTopBlog(HttpServletResponse response) throws IOException {
         List<Blog> blogs = blogService.SelectAllTopBlog();
         for (Blog b:
-             blogs) {b.imageList=JSONUtil.toList(JSONUtil.parseArray(b.image),String.class);
+             blogs) {
+            b.imageList=JSONUtil.toList(JSONUtil.parseArray(b.image),String.class);
 
         }
         return blogs;
@@ -122,7 +123,8 @@ public class BlogController {
     public Blog GetBlog(@RequestBody Map<String,Object>map)
     {   Blog blog;
         String type =(String)map.get("type");
-        if(type.equals("normal"))
+        System.out.println(type);
+        if(type.equals("blog"))
             blog =blogService.getOneBlog((Integer)map.get("id"));
         else
             blog=blogService.getOneTopBlog((Integer)map.get("id"));

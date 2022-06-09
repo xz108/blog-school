@@ -27,7 +27,7 @@ public class CommentServiceimpl implements CommentService {
         String nowDate= sf.format(date);
         System.out.println(nowDate);
         String title;
-        if(judgeTitle(nickname))
+        if(judgeTitle(blog_id,nickname))
         {
             title="作者";
         }
@@ -42,12 +42,12 @@ public class CommentServiceimpl implements CommentService {
     }
 
     @Override
-    public Boolean judgeTitle(String nickname) {
-        Blog blog= commentRepository.SelectPoster(nickname);
+    public Boolean judgeTitle(int id,String postername) {
+        Blog blog= commentRepository.SelectPoster(id);
 //        System.out.println();
         if (blog!=null)
         {
-            return true;
+            return blog.poster.equals(postername);
         }
         return false;
     }
@@ -65,12 +65,12 @@ public class CommentServiceimpl implements CommentService {
         String nowDate= sf.format(date);
         System.out.println(nowDate);
         String title;
-        if(judgeTitle(nickname))
+        if(judgeTitle(blog_id,nickname))
         {
             title="作者";
         }
         else
-            title="观众";
+            title="";
         if (commentRepository.postTopComment(nickname,content,avatar,nowDate,blog_id,title)==1)
         {
             return 1;

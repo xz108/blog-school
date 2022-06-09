@@ -13,7 +13,7 @@ public interface TeamService {
 
 //    public int PostApplication(int team_id,String memberName,String role);
 
-    int createTeam(String leader, String teamMsg, String leader_avatar, int max_num);
+    int createTeam(String leader, String teamMsg, String leader_avatar, int max_num,String title);
 
     int PostApplication(int team_id, String memberName, String role, String avatar);
 
@@ -23,6 +23,6 @@ public interface TeamService {
 
     public List<Team> SelectAll();
 
-    public List<Team> SearchTeam(int key);
+    public List<Team> SearchTeam(String key);
     public List<Team> GetTeamByname(String username);
 }

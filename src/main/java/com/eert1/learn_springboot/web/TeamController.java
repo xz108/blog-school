@@ -22,12 +22,14 @@ public class TeamController {
     @PostMapping("/postTetam")
     public boolean postTeam(@RequestBody Map<String, Object> map)
     {
+        String title =(String) map.get("title");
         String leader =(String) map.get("leader");
         String teamMsg =(String) map.get("teamMsg");
-        String leader_avatar =(String) map.get("leader_avatar");
-        Integer max_num =(Integer) map.get("max_num");
+        String leader_avatar =(String) map.get("avatar");
+        Integer max_num =(Integer) map.get("maxNum");
+
 //        Integer max=Integer.parseInt(max_num);
-        int create = teamService.createTeam(leader,teamMsg,leader_avatar,max_num);
+        int create = teamService.createTeam(leader,teamMsg,leader_avatar,max_num,title);
         return create == 1;
     }
     @PostMapping("/getApplication")
@@ -40,18 +42,18 @@ public class TeamController {
     @PostMapping("/postApplication")
     public boolean postApplication(@RequestBody Map<String,Object>map)
     {
-        String team_id=(String) map.get("team_id");
-        String member_name =(String) map.get("member_name");
+        Integer team_id=(Integer) map.get("team_id");
+        String member_name =(String) map.get("memberName");
         String role =(String) map.get("role");
         String avatar =(String) map.get("avatar");
-        Integer td =Integer.parseInt(team_id);
-        int post= teamService.PostApplication(td,member_name,role,avatar);
+
+        int post= teamService.PostApplication(team_id,member_name,role,avatar);
         return post==1;
     }
     @PostMapping("/SearchTeam")
     public List<Team>SerachTeam(@RequestBody Map<String,Object>map)
     {
-        Integer key=(Integer) map.get("key");
+        String key=(String) map.get("key");
 //        Integer ky =Integer.parseInt(key);
         System.out.println(key);
         return teamService.SearchTeam(key);

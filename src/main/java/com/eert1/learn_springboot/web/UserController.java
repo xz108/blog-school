@@ -36,7 +36,13 @@ public class UserController {
     public Boolean Update(@RequestBody Map<String,Object> map, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         String avatar =(String)map.get("avatar") ;
         String Newusername = (String) map.get("newU");
+        System.out.println("什么都没有"+Newusername);
+        System.out.println(Newusername.isEmpty());
         String Oldusername =(String) map.get("oldU");
+        if(Newusername.isEmpty()){//只有头像改变，用户名输入为空不改变
+            Newusername=Oldusername;
+            System.out.println("改变了什么"+Newusername);
+        }
         return userService.UpdateUser(avatar,Newusername,Oldusername)==1;
     }
 }

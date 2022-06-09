@@ -21,10 +21,10 @@ public class GoodController {
 
     @PostMapping("/PostGood")
     public boolean postGood(@RequestBody Map<String ,Object> map, HttpSession session)
-    {   String seller=(String) session.getAttribute("username");
+    {   String seller=(String) map.get("username");
         List image=(List) map.get("image");
         String name =(String)map.get("name");
-        String description=(String)map.get("des");
+        String description=(String)map.get("description");
         String state =(String)map.get("state");
         String avatar =(String)map.get("avatar");
         String Json;
@@ -69,8 +69,7 @@ public class GoodController {
     @PostMapping("/closeSell")
     public Boolean CloseGood(@RequestBody Map<String,Object>map)
     {
-        String id1 =(String) map.get("gid");
-        int id =Integer.parseInt(id1);
+        Integer id =(Integer) map.get("id");
         System.out.println(id);
         if(1==goodService.closeSell(id))
         {

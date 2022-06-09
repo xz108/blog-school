@@ -18,8 +18,8 @@ public class TeamServiceimpl implements TeamService {
     }
 
     @Override
-    public int createTeam(String leader, String teamMsg,String leader_avatar,int max_num) {
-       int create= teamRepository.create_team(leader,teamMsg,leader_avatar,max_num);
+    public int createTeam(String leader, String teamMsg,String leader_avatar,int max_num,String title) {
+       int create= teamRepository.create_team(leader,teamMsg,leader_avatar,max_num,title);
         if(create==1)
             return 1;
         else return 0;
@@ -55,7 +55,7 @@ public class TeamServiceimpl implements TeamService {
     }
 
     @Override
-    public List<Team> SearchTeam(int key) {
+    public List<Team> SearchTeam(String key) {
         return teamRepository.SearchTeam(key);
     }
 

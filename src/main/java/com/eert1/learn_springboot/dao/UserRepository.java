@@ -27,4 +27,35 @@ public interface UserRepository {
     int UpdateUser(@Param("avatar") String avatar,
                @Param("newU") String newU,
                @Param("oldU") String oldU);
+
+    @Update("update comment set avatar=#{avatar},nickname=#{newU} where nickname=#{oldU};")
+    int UpdateUserComment(@Param("avatar") String avatar,
+                   @Param("newU") String newU,
+                   @Param("oldU") String oldU);
+    @Update("update top_comment set avatar=#{avatar},nickname=#{newU} where nickname=#{oldU};")
+    int UpdateUserTopComment(@Param("avatar") String avatar,
+                          @Param("newU") String newU,
+                          @Param("oldU") String oldU);
+
+    @Update("update db_blog set avatar=#{avatar},poster=#{newU} where poster=#{oldU};")
+    int UpdateUserBlog(@Param("avatar") String avatar,
+                             @Param("newU") String newU,
+                             @Param("oldU") String oldU);
+    @Update("update db_top set avatar=#{avatar},poster=#{newU} where poster=#{oldU};")
+    int UpdateUserBlogTop(@Param("avatar") String avatar,
+                       @Param("newU") String newU,
+                       @Param("oldU") String oldU);
+
+    @Update("update goods set avatar=#{avatar},seller=#{newU} where seller=#{oldU};")
+    int UpdateUserGood(@Param("avatar") String avatar,
+                       @Param("newU") String newU,
+                       @Param("oldU") String oldU);
+    @Update("update team set leader_avatar=#{avatar},leader=#{newU} where leader=#{oldU};")
+    int UpdateUserTeam(@Param("avatar") String avatar,
+                       @Param("newU") String newU,
+                       @Param("oldU") String oldU);
+    @Update("update team_members set avatar=#{avatar},memberName=#{newU} where memberName=#{oldU};")
+    int UpdateUserTeamM(@Param("avatar") String avatar,
+                       @Param("newU") String newU,
+                       @Param("oldU") String oldU);
 }

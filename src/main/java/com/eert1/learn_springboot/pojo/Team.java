@@ -27,10 +27,6 @@ public class Team {
         this.teamMsg = teamMsg;
     }
 
-    public int team_id;
-    public String leader;
-    public String teamMsg;
-
     public String getLeader_avatar() {
         return leader_avatar;
     }
@@ -39,18 +35,13 @@ public class Team {
         this.leader_avatar = leader_avatar;
     }
 
-    public int getMax_num() {
-        return max_num;
+    public int getMaxNum() {
+        return maxNum;
     }
 
-    public void setMax_num(int max_num) {
-        this.max_num = max_num;
+    public void setMaxNum(int maxNum) {
+        this.maxNum = maxNum;
     }
-
-    public String leader_avatar;
-    public int max_num;
-
-    public List<Team_members> team_membersList;
 
     public List<Team_members> getTeam_membersList() {
         return team_membersList;
@@ -59,4 +50,36 @@ public class Team {
     public void setTeam_membersList(List<Team_members> team_membersList) {
         this.team_membersList = team_membersList;
     }
-}
+
+    public int team_id;
+    public String leader;
+    public String teamMsg;
+    public String leader_avatar;
+    public int maxNum;
+
+    public String title;
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "team_id=" + team_id +
+                ", leader='" + leader + '\'' +
+                ", teamMsg='" + teamMsg + '\'' +
+                ", leader_avatar='" + leader_avatar + '\'' +
+                ", maxNum=" + maxNum +
+                ", title='" + title + '\'' +
+                ", team_membersList=" + team_membersList +
+                '}';
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Team_members> team_membersList;
+
+    }

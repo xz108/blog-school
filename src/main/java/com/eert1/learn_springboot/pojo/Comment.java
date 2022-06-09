@@ -4,6 +4,21 @@ import javax.xml.soap.Text;
 import java.util.Date;
 
 public class Comment {
+
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", content='" + content + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", blog_id=" + blog_id +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
@@ -20,11 +35,11 @@ public class Comment {
         this.nickname = nickname;
     }
 
-    public Text getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Text content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -36,12 +51,12 @@ public class Comment {
         this.avatar = avatar;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public int getBlog_id() {
@@ -62,9 +77,11 @@ public class Comment {
 
     public int id;
     public String nickname;
-    public Text content;
+    public String content;
     public String avatar;
-    public Date create_time;
+    public String createTime;
     public int blog_id;
     public String title;
+
+
 }

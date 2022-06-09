@@ -10,11 +10,12 @@ import java.util.List;
 @Mapper
 @Repository
 public interface TeamRepository {
-    @Insert("insert into team values(null,#{leader},#{teamMsg},#{leader_avatar},#{max_num})")
+    @Insert("insert into team values(null,#{leader},#{teamMsg},#{leader_avatar},#{max_num},#{title})")
     int create_team(@Param("leader")String leader,
                     @Param("teamMsg")String teamMsg,
                     @Param("leader_avatar") String leader_avatar,
-                    @Param("max_num")int max_num);
+                    @Param("max_num")int max_num,
+                    @Param("title")String title);
 
     @Insert("insert into team_members values (null,#{team_id},#{memberName},#{role},'OnPending',#{avatar})")
     int applyToJoin(@Param("team_id")int team_id,
@@ -36,7 +37,7 @@ public interface TeamRepository {
     List<Team> SelectAll();
 
 //    @Select("select * from ")
-    List<Team> SearchTeam(int key);
+    List<Team> SearchTeam(String key);
 
     List<Team>GetAllTeamByName(String username);
 }

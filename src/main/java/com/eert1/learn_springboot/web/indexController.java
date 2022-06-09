@@ -17,14 +17,14 @@ import java.util.Map;
 @ResponseBody
 @RequestMapping("/")
 public class indexController {
-    @GetMapping()
-    public String index()
-    {
-        return "test";
-    }
+//    @GetMapping("")
+//    public String index()
+//    {
+//        return "test";
+//    }
     @Autowired
     UserService userService;
-    @PostMapping("/login")
+    @PostMapping("/mylogin")
     public User login(@RequestBody Map<String,Object> map, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
        String username = (String) map.get("username");
        String password = (String) map.get("password");
@@ -42,7 +42,6 @@ public class indexController {
             session.setAttribute("user",username);
 //            response.getWriter().write("ture");
             return user;
-
         }
         return  null;
     }

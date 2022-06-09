@@ -7,7 +7,7 @@ import java.util.List;
 public interface CommentService {
     public List<Comment> selectAllComment(int blog_id);
     public int postComment(String nickname,String content,String avatar,int blog_id);
-    public Boolean judgeTitle(String nickname);
+    public Boolean judgeTitle(int id,String postername);
 
     public List<Comment> selectAllTopComment(int blog_id);
     public int postTopComment(String nickname,String content,String avatar,int blog_id);
