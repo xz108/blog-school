@@ -50,6 +50,4 @@ public interface BlogRepository {
                  @Param("image")String image,
                  @Param("posterId")int posterId,
                  @Param("avatar")String avatar);
-
-
 }

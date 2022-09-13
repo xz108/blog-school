@@ -3,9 +3,9 @@ spring:
 #    mode: HTML
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8&autoReconnect=true
+    url: jdbc:mysql://1.15.226.69:3306/db_blog?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8&autoReconnect=true
     username: root
-    password: root
+    password: Myroot_123
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
@@ -15,8 +15,6 @@ spring:
 #        min-idle: 5
 #        max-idle: 10
 #        max-wait: -1
-  profiles:
-    active: dev
 
 server:
   port: 8080
